@@ -7,7 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <button onclick="ttt()">click</button>
+    
+    <div id="parent">
+
+    </div>
 </body>
 <script src="{{ asset('js/apirest.js') }}"></script>
 </html>
