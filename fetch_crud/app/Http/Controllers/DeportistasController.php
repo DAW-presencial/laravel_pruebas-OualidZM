@@ -57,7 +57,14 @@ class DeportistasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $deportista = Deportista::find($id);
+        $deportista->name = $request->name;
+        $deportista->surname = $request->surname;
+        $deportista->phone = $request->phone;
+        $deportista->age = $request->age;
+        $deportista->update();
+        return response()->json(new  DeportistaResource($deportista),"Deportista Updated");
+
     }
 
     /**
