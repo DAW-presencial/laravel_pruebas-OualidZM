@@ -27,7 +27,13 @@ class DeportistasController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $deportistas = Deportista::create([
+            "name" => $request->name,
+            "surname" => $request->surname,
+            "phone" => $request->phone,
+            "age" => $request->age,
+        ]);
+        return response()->json(new DeportistaResource($deportistas),"Depostista Created");
     }
 
     /**
@@ -38,7 +44,6 @@ class DeportistasController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
