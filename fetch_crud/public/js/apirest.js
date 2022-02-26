@@ -1,0 +1,3 @@
+function ttt(){
+    alert ( "dsadsad")
+}
