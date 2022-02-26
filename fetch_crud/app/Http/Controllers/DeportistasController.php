@@ -44,6 +44,8 @@ class DeportistasController extends Controller
      */
     public function show($id)
     {
+        $deportista = Deportista::find($id);
+        return response()->json(new DeportistaResource($deportista));
     }
 
     /**
