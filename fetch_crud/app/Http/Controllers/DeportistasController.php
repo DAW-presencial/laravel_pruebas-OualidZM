@@ -16,7 +16,7 @@ class DeportistasController extends Controller
     public function index()
     {
         $deportistas = Deportista::all();
-        return response()->json([new DeportistaResource($deportistas)]);
+        return response()->json(new DeportistaResource($deportistas));
     }
 
     /**
@@ -28,13 +28,14 @@ class DeportistasController extends Controller
     public function store(Request $request)
     {
         $deportistas = Deportista::create([
-            "name" => $request->name,
-            "surname" => $request->surname,
-            "phone" => $request->phone,
-            "age" => $request->age,
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'phone' => $request->phone,
+            'age' => $request->age,
         ]);
-        return response()->json(new DeportistaResource($deportistas),"Depostista Created");
+        return response()->json([new DeportistaResource($deportistas),"Depostista Created"]);
     }
+
 
     /**
      * Display the specified resource.
@@ -63,7 +64,7 @@ class DeportistasController extends Controller
         $deportista->phone = $request->phone;
         $deportista->age = $request->age;
         $deportista->update();
-        return response()->json(new  DeportistaResource($deportista),"Deportista Updated");
+        return response()->json([new DeportistaResource($deportista),"Deportista Updated"]);
 
     }
 
@@ -77,6 +78,6 @@ class DeportistasController extends Controller
     {
         $deportista = Deportista::find($id);
         $deportista->delete();
-        return response()->json(new DeportistaResource($deportista),"Deportista deleted");
+        return response()->json([new DeportistaResource($deportista),"Deportista deleted"]);
     }
 }
