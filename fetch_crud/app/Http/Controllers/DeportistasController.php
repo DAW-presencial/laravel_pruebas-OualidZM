@@ -75,6 +75,8 @@ class DeportistasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deportista = Deportista::find($id);
+        $deportista->delete();
+        return response()->json(new DeportistaResource($deportista),"Deportista deleted");
     }
 }
