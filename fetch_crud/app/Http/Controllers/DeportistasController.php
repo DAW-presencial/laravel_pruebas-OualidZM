@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DeportistaResource;
 use App\Models\Deportista;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class DeportistasController extends Controller
     public function index()
     {
         $deportistas = Deportista::all();
-        return response()->json([new ])
+        return response()->json([new DeportistaResource($deportistas)]);
     }
 
     /**
@@ -26,7 +27,7 @@ class DeportistasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
