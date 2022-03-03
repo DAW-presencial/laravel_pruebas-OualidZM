@@ -18,7 +18,7 @@ class DeportistasController extends Controller
         $deportistas = Deportista::all();
         return response()->json(new DeportistaResource($deportistas));
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      *

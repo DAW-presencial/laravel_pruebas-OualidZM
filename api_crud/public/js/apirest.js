@@ -29,6 +29,8 @@ function RenderTable(deportista){
                 <th>Delete</th>
             </tr>
         <tbody>`
+
+
             deportista.forEach(e => {
                     tabHeader +=
                     `
@@ -94,19 +96,19 @@ function addDeportista(){
     let surnameValue = document.getElementById('create_surname').value
     let phoneValue = document.getElementById('create_phone').value
     let ageValue = document.getElementById('create_age').value
-    let new_deportista = {
-        name: nameValue,
-        surname: surnameValue,
-        phone: phoneValue,
-        age: ageValue
-        }
-            fetch('api/v1/deportistas', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(new_deportista),
-              })
+
+        fetch('api/v1/deportistas', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: document.getElementById('create_name').value,
+                surname: document.getElementById('create_surname').value,
+                phone: document.getElementById('create_phone').value,
+                age: document.getElementById('create_age').value
+                }),
+            })
         returnBack()
 }
 
@@ -151,21 +153,19 @@ function update_Deportista(id){
     let nameValue = document.getElementById('edit_name').value
     let surnameValue = document.getElementById('edit_surname').value
     let phoneValue = document.getElementById('edit_phone').value
-
     let ageValue = document.getElementById('edit_age').value
-    let update_deportista = {
-        name: nameValue,
-        surname: surnameValue,
-        phone: phoneValue,
-        age: ageValue
-        }
 
     fetch(`api/v1/deportistas/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(update_deportista),
+        body: JSON.stringify({
+            name: edit_name,
+            surname: edit_surname,
+            phone: edit_phone,
+            age: edit_age
+        }),
         })
     returnBack()
 }
